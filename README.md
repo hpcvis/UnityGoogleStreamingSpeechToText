@@ -30,7 +30,7 @@ openupm add com.oshoham.unity-google-cloud-streaming-speech-to-text
     3. Create a service account.
     4. Download your service account's private key as a JSON file.
 3. Rename your private key JSON file to `gcp_credentials.json`.
-4. Place your `gcp_credentials.json` file in a folder called `Assets/StreamingAssets` in your Unity project.
+4. Place your `gcp_credentials.json` file in a folder called `Assets/StreamingAssets/Credentials` in your Unity project.
 
 ## Usage
 
