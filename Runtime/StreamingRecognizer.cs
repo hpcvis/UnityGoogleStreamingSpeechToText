@@ -57,6 +57,7 @@ namespace GoogleCloudStreamingSpeechToText {
         private int _finalRequestEndTime = 0;
         private double _bridgingOffset = 0;
 
+        private const string CredentialSubfolderName = "Credentials";
         private const string CredentialFileName = "gcp_credentials.json";
         private const double NormalizedFloatTo16BitConversionFactor = 0x7FFF + 0.4999999999999999;
         private const float MicInitializationTimeout = 1;
@@ -104,9 +105,9 @@ namespace GoogleCloudStreamingSpeechToText {
         }
 
         private void Awake() {
-            string credentialsPath = Path.Combine(Application.streamingAssetsPath, CredentialFileName);
+            string credentialsPath = Path.Combine(new string[3] { Application.streamingAssetsPath, CredentialSubfolderName, CredentialFileName });
             if (!File.Exists(credentialsPath)) {
-                Debug.LogError("Could not find StreamingAssets/gcp_credentials.json. Please create a Google service account key for a Google Cloud Platform project with the Speech-to-Text API enabled, then download that key as a JSON file and save it as StreamingAssets/gcp_credentials.json in this project. For more info on creating a service account key, see Google's documentation: https://cloud.google.com/speech-to-text/docs/quickstart-client-libraries#before-you-begin");
+                Debug.LogError($"Could not find {credentialsPath}. Please create a Google service account key for a Google Cloud Platform project with the Speech-to-Text API enabled, then download that key as a JSON file and save it as {credentialsPath} in this project. For more info on creating a service account key, see Google's documentation: https://cloud.google.com/speech-to-text/docs/quickstart-client-libraries#before-you-begin");
                 return;
             }
 
